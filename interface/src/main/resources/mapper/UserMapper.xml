@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.zucc.ygg.movie.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.edu.zucc.ygg.movie.domain.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="ban" jdbcType="INTEGER" property="ban" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+
+  <update id="updatePassword">
+    update users
+    set password = #{newPassword}
+    where user_name = #{username}
+  </update>
+
+  <update id="banUser">
+    update users
+    set ban = 1
+    where user_name = #{username}
+  </update>
+
+    <update id="unBanUser">
+    update users
+    set ban = 0
+    where user_name = #{username}
+  </update>
+
+    <update id="updateUserHeaderImg">
+        update user_info
+        set header_url = #{imgUrl}
+        where user_id = (select id from users where user_name = #{username})
+    </update>
+
+  <select id="getPassword" resultType="java.lang.String">
+      select password
+      from users
+      where user_name = #{username}
+   </select>
+
+  <select id="getRole" resultType="java.lang.String">
+      select role
+      from users
+      where user_name = #{username}
+  </select>
+
+  <select id="checkUserBanStatus" resultType="java.lang.Integer">
+    select ban
+    from users
+    where user_name = #{username}
+  </select>
+
+  <select id="getRolePermission" resultType="java.lang.String">
+    select permission
+    from users
+    where user_name = #{username}
+  </select>
+
+  <select id="getPermission" resultType="java.lang.String">
+    select permission
+    from users
+    where user_name = #{username}
+  </select>
+
+  <select id="getUser" resultMap="BaseResultMap">
+      select id,user_name,password,role,permission,ban,token
+      from users
+      where user_name = #{username}
+  </select>
+
+    <select id="getUserList" parameterType="com.edu.zucc.ygg.movie.dto.UserDto" resultType="com.edu.zucc.ygg.movie.dto.UserDto">
+        select b.id as id,a.user_name as username,b.phoneNumber as phoneNumber,b.email as email,b.sex as sex,
+        b.personality_signature as personalitySignature,b.birth_day as birthDay,b.occupation as occupation,
+        b.location as location,DATE_FORMAT(a.create_time,'%Y-%m-%d')as createDate,b.nickname as nickname,a.ban as ban,b.header_url as headerImgUrl
+        from users a left join user_info b on a.id = b.user_id
+        where a.role = 'user'
+        <if test="username != null">
+            AND a.user_name like CONCAT('%',#{username},'%')
+        </if>
+    </select>
+
+    <select id="getAdminList" parameterType="com.edu.zucc.ygg.movie.dto.UserDto" resultType="com.edu.zucc.ygg.movie.dto.UserDto">
+        select b.id as id,a.user_name as username,b.phoneNumber as phoneNumber,b.email as email,b.sex as sex,
+        b.personality_signature as personalitySignature,b.birth_day as birthDay,b.occupation as occupation,
+        b.location as location,DATE_FORMAT(a.create_time,'%Y-%m-%d')as createDate,b.nickname as nickname,a.ban as ban
+        from users a left join user_info b on a.id = b.user_id
+        where a.role = 'admin'
+        <if test="username != null">
+            AND a.user_name like CONCAT('%',#{username},'%')
+        </if>
+    </select>
+
+    <select id="getUserInfo" resultType="com.edu.zucc.ygg.movie.dto.UserDto">
+        select b.id as id,a.user_name as username,b.phoneNumber as phoneNumber,b.email as email,b.sex as sex,
+        b.personality_signature as personalitySignature,b.birth_day as birthDay,b.occupation as occupation,
+        b.location as location,DATE_FORMAT(a.create_time,'%Y-%m-%d')as createDate,b.nickname as nickname,a.ban as ban,
+        b.header_url as headerImgUrl
+        from users a left join user_info b on a.id = b.user_id
+        where a.user_name = #{username}
+    </select>
+
+    <select id="getUserInfoById" resultType="com.edu.zucc.ygg.movie.dto.UserDto" parameterType="integer">
+        select b.id as id,a.user_name as username,b.phoneNumber as phoneNumber,b.email as email,b.sex as sex,
+        b.personality_signature as personalitySignature,b.birth_day as birthDay,b.occupation as occupation,
+        b.location as location,DATE_FORMAT(a.create_time,'%Y-%m-%d')as createDate,b.nickname as nickname,a.ban as ban,
+        b.header_url as headerImgUrl
+        from users a left join user_info b on a.id = b.user_id
+        where a.id = #{userId}
+    </select>
+
+    <select id="getUserId" resultType="java.lang.Integer">
+        select id
+        from users
+        where user_name = #{username}
+    </select>
+</mapper>
