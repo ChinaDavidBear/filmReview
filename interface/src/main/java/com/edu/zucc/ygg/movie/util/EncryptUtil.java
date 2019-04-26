@@ -204,7 +204,7 @@ public final class EncryptUtil {
     }
 
     public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        System.out.println(EncryptUtil.encryptMd5("123456", "ygg"));
+        System.out.println(EncryptUtil.encryptMd5("123456", "admin"));
     }
 
 }
