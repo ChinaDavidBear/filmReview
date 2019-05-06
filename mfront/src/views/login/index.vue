@@ -84,16 +84,16 @@
           :span="11"
           style="height:100%"
         >
-          <img
-            src="@/assets/footer-logo.png"
-            style="line-height:10vh;width:12vh;float:right;height:100%"
-          />
+          <!--<img-->
+            <!--src="@/assets/footer-logo.png"-->
+            <!--style="line-height:10vh;width:12vh;float:right;height:100%"-->
+          <!--/>-->
         </el-col>
         <el-col
           :span="13"
           style="height:100%"
         >
-          <p style="float:left;height:100%;line-height:10vh;margin:0px">Copyright &copy; 31501102_叶港归</p>
+          <p style="float:left;height:100%;line-height:10vh;margin:0px">Copyright &copy; 2019</p>
         </el-col>
       </el-row>
     </div>
@@ -112,7 +112,7 @@ export default {
       loading: false,
       form: {
         name: "",
-        password:"" 
+        password:""
       }
     };
   },

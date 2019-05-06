@@ -178,46 +178,46 @@
             class="row"
             style="text-align: center"
           >
-            <div class="col-md-6">
-              <div class="content tag-linksite">
-                <h4 class="title">相关网站</h4>
-                <a
-                  class="footer-link"
-                  href="https://movie.douban.com/"
-                  target="_blank"
-                >豆瓣电影</a>
-                <i style="font-style:normal">|</i>
-                <a
-                  class="footer-link"
-                  href="http://maoyan.com/"
-                  target="_blank"
-                >猫眼电影</a>
-              </div>
-            </div>
+            <!--<div class="col-md-6">-->
+              <!--<div class="content tag-linksite">-->
+                <!--<h4 class="title">相关网站</h4>-->
+                <!--<a-->
+                  <!--class="footer-link"-->
+                  <!--href="https://movie.douban.com/"-->
+                  <!--target="_blank"-->
+                <!--&gt;豆瓣电影</a>-->
+                <!--<i style="font-style:normal">|</i>-->
+                <!--<a-->
+                  <!--class="footer-link"-->
+                  <!--href="http://maoyan.com/"-->
+                  <!--target="_blank"-->
+                <!--&gt;猫眼电影</a>-->
+              <!--</div>-->
+            <!--</div>-->
             <div class="col-md-6">
               <div class="content tag-friendsite">
                 <div class="content tag-cloud friend-links">
-                  <h4 class="title">友情链接</h4>
-                  <a
-                    class="footer-link"
-                    href="http://www.bootcss.com"
-                    title="Bootstrap 中文网"
-                    target="_blank"
-                  >Bootstrap中文网</a>
-                  <i style="font-style:normal">|</i>
-                  <a
-                    class="footer-link"
-                    href="https://cn.vuejs.org/"
-                    title="vue 官网"
-                    target="_blank"
-                  >VUE官网</a>
-                  <i style="font-style:normal">|</i>
-                  <a
-                    class="footer-link"
-                    href="https://www.jquery123.com/"
-                    title="jQuery 中文文档"
-                    target="_blank"
-                  >jQuery中文文档</a>
+                  <!--<h4 class="title">友情链接</h4>-->
+                  <!--<a-->
+                    <!--class="footer-link"-->
+                    <!--href="http://www.bootcss.com"-->
+                    <!--title="Bootstrap 中文网"-->
+                    <!--target="_blank"-->
+                  <!--&gt;Bootstrap中文网</a>-->
+                  <!--<i style="font-style:normal">|</i>-->
+                  <!--<a-->
+                    <!--class="footer-link"-->
+                    <!--href="https://cn.vuejs.org/"-->
+                    <!--title="vue 官网"-->
+                    <!--target="_blank"-->
+                  <!--&gt;VUE官网</a>-->
+                  <!--<i style="font-style:normal">|</i>-->
+                  <!--<a-->
+                    <!--class="footer-link"-->
+                    <!--href="https://www.jquery123.com/"-->
+                    <!--title="jQuery 中文文档"-->
+                    <!--target="_blank"-->
+                  <!--&gt;jQuery中文文档</a>-->
                 </div>
               </div>
             </div>
@@ -228,7 +228,7 @@
       <div class="footer-copyright py-3">
         <font style="vertical-align: inherit;">
           <font style="vertical-align: inherit;">
-            ©2019版权所有：2019_31501102_叶港归_毕业设计
+            ©2019版权所有：2019
           </font>
         </font>
       </div>
@@ -525,7 +525,7 @@ export default {
     logout() {
       this.login_show = true;
       sessionStorage.clear();
-      window.location.reload(); 
+      window.location.reload();
     },
     register() {
       if (this.register_form.password != this.register_form.repeat) {
